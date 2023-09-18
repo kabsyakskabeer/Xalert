@@ -1,166 +1,231 @@
-<!--
-Copyright 2018 Google LLC
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-<!-- [START sheets_quickstart] -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Sheets API Quickstart</title>
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <p>Sheets API Quickstart</p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        /* POPPINS FONT */
+ /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap'); */
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    /* //background: url('2.png'); */
+    background-color: bisque;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 80vh; */
+    max-height: fit-content;
+    
+}
+.container{
+    margin: auto;
+    background: url("1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    min-height: 400px;
+    max-width: 500px;
+    min-width: 370px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
+                0 2px 20px 0 rgba(0,0,0,0.2);
+}
+.header{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 0 0;
+    font-size: 30px;
+    color: #fff;
+}
+.input-container{
+    margin: 30px 30px 10px 30px;
+}
+label{
+    color: #fff;
+    margin: 0 0 5px 15px;
+}
+.input-field{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 15px 0;
+}
+input,select{
+    outline: none;
+    padding: 0 20px 0 20px;
+    border: 2px solid rgba(255,255,255, 0.015);
+    background: rgba(255,255,255,0.35);
+    height: 38px;
+    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.085),
+                0 2px 30px 0 rgba(0,0,0,0.2);
+    border-radius: 50px;
+    font-size: 16px;
+    color: #fff;
+}
+input:focus,input:valid{
+    border: 2px solid rgba(255,255,255,0.65);
+    background: transparent;
+    box-shadow: none;
+    border-radius: 30px;
+}
+.submit{
+    background: transparent;
+    height: 40px;
+    border: 2px solid rgba(255,255,255,0.65);
+    box-shadow: none;
+    transition: .3s ease-in-out;
+    margin-top: 10px;
+}
+.submit:hover{
+    color: rgb(106,87,168);
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.016);
+    background: rgba(255,255,255,0.35);
+    box-shadow: 0 1px 10px 0 rgba(0,0,0,0.085),
+                0 2px 30px 0 rgba(0,0,0,0.2);
+}
+span{
+    display: flex;
+    justify-content: right;
+}
+span a{
+    color: #fff;
+    font-size: 12px;
+    text-decoration: none;
+}
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+* {
+        box-sizing: border-box;
+    }
 
-    <script type="text/javascript">
-      /* exported gapiLoaded */
-      /* exported gisLoaded */
-      /* exported handleAuthClick */
-      /* exported handleSignoutClick */
+    nav {
 
-      // TODO(developer): Set to client ID and API key from the Developer Console
-      const CLIENT_ID = '79956170338-lknmtr6q07t55qvfbgq05hatma3lghki.apps.googleusercontent.com';
-      const API_KEY = 'AIzaSyBUrTBTLSSoiokoe2PIQavQhzow8yOgny8';
+    background: url("1.png");
+        overflow: hidden;
+        /* background-color: #330b7c; */
+        padding: 10px;
+        border-radius: 15px;
+    }
 
-      // Discovery doc URL for APIs used by the quickstart
-      const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
+    .links {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+    }
 
-      // Authorization scopes required by the API; multiple scopes can be
-      // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+    nav .logo {
+        font-size: 25px;
+        font-weight: bold;
+    }
 
-      let tokenClient;
-      let gapiInited = false;
-      let gisInited = false;
+    nav .links:hover {
+        background-color: rgb(214, 238, 77);
+        color: rgb(42, 10, 94);
+    }
 
-      document.getElementById('authorize_button').style.visibility = 'hidden';
-      document.getElementById('signout_button').style.visibility = 'hidden';
+    nav .selected {
+        background-color: dodgerblue;
+        color: white;
+    }
 
-      /**
-       * Callback after api.js is loaded.
-       */
-      function gapiLoaded() {
-        gapi.load('client', initializeGapiClient);
-      }
+    .rightSection {
+        float: right;
+    }
 
-      /**
-       * Callback after the API client is loaded. Loads the
-       * discovery doc to initialize the API.
-       */
-      async function initializeGapiClient() {
-        await gapi.client.init({
-          apiKey: API_KEY,
-          discoveryDocs: [DISCOVERY_DOC],
-        });
-        gapiInited = true;
-        maybeEnableButtons();
-      }
-
-      /**
-       * Callback after Google Identity Services are loaded.
-       */
-      function gisLoaded() {
-        tokenClient = google.accounts.oauth2.initTokenClient({
-          client_id: CLIENT_ID,
-          scope: SCOPES,
-          callback: '', // defined later
-        });
-        gisInited = true;
-        maybeEnableButtons();
-      }
-
-      /**
-       * Enables user interaction after all libraries are loaded.
-       */
-      function maybeEnableButtons() {
-        if (gapiInited && gisInited) {
-          document.getElementById('authorize_button').style.visibility = 'visible';
+    @media screen and (max-width: 870px) {
+        nav .links {
+            float: none;
+            display: block;
+            text-align: left;
         }
-      }
-
-      /**
-       *  Sign in the user upon button click.
-       */
-      function handleAuthClick() {
-        tokenClient.callback = async (resp) => {
-          if (resp.error !== undefined) {
-            throw (resp);
-          }
-          document.getElementById('signout_button').style.visibility = 'visible';
-          document.getElementById('authorize_button').innerText = 'Refresh';
-          await listMajors();
-        };
-
-        if (gapi.client.getToken() === null) {
-          // Prompt the user to select a Google Account and ask for consent to share their data
-          // when establishing a new session.
-          tokenClient.requestAccessToken({prompt: 'consent'});
-        } else {
-          // Skip display of account chooser and consent dialog for an existing session.
-          tokenClient.requestAccessToken({prompt: ''});
+        .rightSection {
+            float: none;
         }
-      }
+    }
+    </style>
+</head>
+<body>
+<!-- -------------------------------------------- -->
 
-      /**
-       *  Sign out the user upon button click.
-       */
-      function handleSignoutClick() {
-        const token = gapi.client.getToken();
-        if (token !== null) {
-          google.accounts.oauth2.revoke(token.access_token);
-          gapi.client.setToken('');
-          document.getElementById('content').innerText = '';
-          document.getElementById('authorize_button').innerText = 'Authorize';
-          document.getElementById('signout_button').style.visibility = 'hidden';
-        }
-      }
+    <nav class="">
+        <a class="links logo" href="#">Expiry Alart</a>
+        <div class="rightSection">
+            <a class="selected links" href="h">Home</a>
+            <a class="links" href="#">Contact Us</a>
+            <a class="links" href="#">About Us</a>
+            <a class="links" href="#">More Info</a>
+            <a class="links" href="#">Register</a>
+        </div>
+    </nav>
 
-      /**
-       * Print the names and majors of students in a sample spreadsheet:
-       * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-       */
-      async function listMajors() {
-        let response;
-        try {
-          // Fetch first 10 files
-          response = await gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: '15busnzu2OW70jlF93WyekAQoTgi-3Mb0KsFL_8hg_Ho',
-            range: 'A1:A5',
-          });
-        } catch (err) {
-          document.getElementById('content').innerText = err.message;
-          return;
-        }
-        const range = response.result;
-        if (!range || !range.values || range.values.length == 0) {
-          document.getElementById('content').innerText = 'No values found.';
-          return;
-        }
-        // Flatten to string to display
-        const output = range.values.reduce(
-            (str, row) => `${str}${row[0]}, ${row[4]}\n`,
-            'Name, Major:\n');
-        document.getElementById('content').innerText = output;
-      }
-    </script>
-    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-  </body>
+
+    <!-- ------------------------ -->
+    <form  class="container" action="">
+        <div class="header">
+            <header>subscribe</header>
+            <br>
+           
+        </div>
+        <div class="input-container">      ...say good bye to loss on drug expiry!! <br>           ...only ₦500 par month</div>
+     
+        <div class="input-container">
+            <div class="input-field">
+                <label for="user">Names</label>
+                <input type="text" name="username" id="user" required>  
+            </div>
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>  
+            </div>
+            <div class="input-field">
+                <label for="cemail">Confirm email</label>
+                <input type="email" name="cemail" id="cemail" required>  
+            </div>
+            <div class="input-field">
+
+                <div class="input-field">
+                    <label for="phone">Phone</label>
+                    <input type="tel" name="phone" id="phone" required>  
+                </div>
+                <!-- <div class="input-field">
+                    <label for="facility">Facility</label>
+                    <input type="search" name="facility" id="facility" required>  
+                </div> -->
+                <div class="input-field">
+
+                 <label for="facility">facility type</label>
+
+                <select name="pets" id="facility">
+                  <option value="" class="input-field">--choose an option--</option>
+                  <option value="goldfish">clinic</option>
+                  <option value="spider">hospital</option>
+                  <option value="hamster">pharmacy</option>
+                  <option value="parrot">pharmacy store</option>
+                  <option value="dog">patent</option>
+                  <option value="cat">patent store</option>
+                  <option value="goldfish">whare house</option>
+                </select>
+                
+                </div>
+                    
+            <div class="input-field">
+                
+                <input type="submit" class="submit"  name="submit" value="subscribe">  
+            </div>
+            <!-- <span><a href="#">Forgot password?</a></span> -->
+        </div>
+    </form>
+</body>
 </html>
