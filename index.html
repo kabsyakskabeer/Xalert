@@ -30,8 +30,8 @@ body{
     background-size: cover;
     border-radius: 10px;
     min-height: 400px;
-    max-width: 500px;
-    min-width: 370px;
+    max-width: 400px;
+    min-width: 200px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),
                 0 2px 20px 0 rgba(0,0,0,0.2);
 }
@@ -44,6 +44,7 @@ body{
 }
 .input-container{
     margin: 30px 30px 10px 30px;
+    color: #fff;
 }
 label{
     color: #fff;
@@ -68,9 +69,11 @@ input,select{
 }
 input:focus,input:valid{
     border: 2px solid rgba(255,255,255,0.65);
-    background: transparent;
+    /* background: transparent; */
+    background: bisque;
     box-shadow: none;
     border-radius: 30px;
+    color: blue;
 }
 .submit{
     background: transparent;
@@ -84,7 +87,8 @@ input:focus,input:valid{
     color: rgb(106,87,168);
     cursor: pointer;
     border: 2px solid rgba(255,255,255,0.016);
-    background: rgba(255,255,255,0.35);
+    /* background: rgba(255,255,255,0.35); */
+    background: bisque;
     box-shadow: 0 1px 10px 0 rgba(0,0,0,0.085),
                 0 2px 30px 0 rgba(0,0,0,0.2);
 }
@@ -131,12 +135,14 @@ span a{
     }
 
     nav .links:hover {
-        background-color: rgb(214, 238, 77);
-        color: rgb(42, 10, 94);
+        background-color: bisque;
+         /* rgb(214, 238, 77); */
+        color:blue;
+         /* rgb(42, 10, 94); */
     }
 
     nav .selected {
-        background-color: dodgerblue;
+        /* background-color: dodgerblue; */
         color: white;
     }
 
@@ -171,8 +177,8 @@ span a{
     </nav>
 
 
-    <!-- ------------------------ -->
-    <form  class="container" action="">
+<!-- ------------------------------------------------------------------------------------- -->
+    <form  class="container" action="http://localhost:8080/">
         <div class="header">
             <header>subscribe</header>
             <br>
@@ -183,7 +189,7 @@ span a{
         <div class="input-container">
             <div class="input-field">
                 <label for="user">Names</label>
-                <input type="text" name="username" id="user" required>  
+                <input type="text" name="names" id="names" required>  
             </div>
             <div class="input-field">
                 <label for="email">Email</label>
@@ -207,15 +213,15 @@ span a{
 
                  <label for="facility">facility type</label>
 
-                <select name="pets" id="facility">
-                  <option value="" class="input-field">--choose an option--</option>
-                  <option value="goldfish">clinic</option>
-                  <option value="spider">hospital</option>
-                  <option value="hamster">pharmacy</option>
-                  <option value="parrot">pharmacy store</option>
-                  <option value="dog">patent</option>
-                  <option value="cat">patent store</option>
-                  <option value="goldfish">whare house</option>
+                <select name="facility" id="facility">
+                  <option value="">--choose an option--</option>
+                  <option value="clinic">clinic</option>
+                  <option value="hospital">hospital</option>
+                  <option value="pharmacy">pharmacy</option>
+                  <option value="pharmacy store">pharmacy store</option>
+                  <option value="patent">patent</option>
+                  <option value="patent store">patent store</option>
+                  <option value="whare house">whare house</option>
                 </select>
                 
                 </div>
