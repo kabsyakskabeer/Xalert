@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +25,10 @@ body{
     
 }
 .container{
+    color: white;
     margin: auto;
-    background: url("1.png");
+    background-color:  #22a2ac;
+    /* background: url("1.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
@@ -67,13 +70,13 @@ input,select{
     font-size: 16px;
     color: #fff;
 }
-input:focus,input:valid{
+input:focus,input:valid,select:focus,select:valid{
     border: 2px solid rgba(255,255,255,0.65);
     /* background: transparent; */
     background: bisque;
     box-shadow: none;
     border-radius: 30px;
-    color: blue;
+    color: #22a2ac;
 }
 .submit{
     background: transparent;
@@ -103,15 +106,15 @@ span a{
 }
 
 
-* {
+    /* * {
         box-sizing: border-box;
-    }
+    } */
 
     nav {
 
-    background: url("1.png");
+    /* background: url("1.png"); */
         overflow: hidden;
-        /* background-color: #330b7c; */
+        background-color: #22a2ac;
         padding: 10px;
         border-radius: 15px;
     }
@@ -137,7 +140,8 @@ span a{
     nav .links:hover {
         background-color: bisque;
          /* rgb(214, 238, 77); */
-        color:blue;
+        color: #22a2ac;
+        /* blue; */
          /* rgb(42, 10, 94); */
     }
 
@@ -150,41 +154,42 @@ span a{
         float: right;
     }
 
-    @media screen and (max-width: 870px) {
+    @media screen and (max-width: 570px) {
         nav .links {
             float: none;
             display: block;
             text-align: left;
         }
         .rightSection {
-            float: none;
+            float: left;
         }
     }
     </style>
 </head>
 <body>
-<!-- -------------------------------------------- -->
+<!-- ------------------------------------------------------------------------------------- -->
 
     <nav class="">
         <a class="links logo" href="#">Expiry Alart</a>
         <div class="rightSection">
-            <a class="selected links" href="h">Home</a>
-            <a class="links" href="#">Contact Us</a>
-            <a class="links" href="#">About Us</a>
-            <a class="links" href="#">More Info</a>
-            <a class="links" href="#">Register</a>
+            <a class="selected links" href="h">Unsubscribe</a>
+            <!-- <a class="links" href="#">What we do</a>
+            <a class="links" href="#">Your benifits</a>
+            <a class="links" href="#">Contact us</a> -->
         </div>
     </nav>
+  
 
 
 <!-- ------------------------------------------------------------------------------------- -->
     <form  class="container" action="http://localhost:8080/">
         <div class="header">
             <header>subscribe</header>
-            <br>
-           
         </div>
-        <div class="input-container">      ...say good bye to loss on drug expiry!! <br>           ...only ₦500 par month</div>
+        <div class="input-container">...say good bye to loss on drug expiry!! <br> 
+            ...you will be alerted before drug expiry <br>     
+            ... we will help you redistribute <br>     
+             ...only ₦ 200 par month</div>
      
         <div class="input-container">
             <div class="input-field">
@@ -213,7 +218,7 @@ span a{
 
                  <label for="facility">facility type</label>
 
-                <select name="facility" id="facility">
+                <select name="facility" id="facility" prompt = "yes">
                   <option value="">--choose an option--</option>
                   <option value="clinic">clinic</option>
                   <option value="hospital">hospital</option>
@@ -230,8 +235,22 @@ span a{
                 
                 <input type="submit" class="submit"  name="submit" value="subscribe">  
             </div>
-            <!-- <span><a href="#">Forgot password?</a></span> -->
+            
         </div>
     </form>
+</div>
+    <nav>
+        <!-- <a class="links logo" href="#">Expiry Alart</a> -->
+        <div class="rightSection">
+            <a class="selected links" href="h">Unsubscribe</a>
+            <a class="links" href="#">+2348122841261</a>
+            <a class="links" href="#">kabsyaksameer@gmail.com</a>
+        </div>
+    </nav>
+    
+
+
+    
 </body>
+
 </html>
