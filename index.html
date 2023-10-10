@@ -251,8 +251,10 @@ span a{
     
     <script>
         let loginButton = document.getElementById('login');
+        let loginContainer = document.getElementsByClassName('container');
+        
         loginButton.addEventListener('click',function(){
-            alert('i am clicked');
+            loginContainer.style.display = "hidden";
         });
     </script>
 
