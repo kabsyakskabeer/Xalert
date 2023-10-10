@@ -177,6 +177,7 @@ span a{
             <a class="links" href="https://script.google.com/macros/s/AKfycbxsuOkIKCDfbvLh8u0rUXobR_K1qqtQQWJT_DLEJTwp/dev">Admin</a>
             <!-- <a class="links" href="#">Your benifits</a> -->
             <!-- <a class="links" href="#">Contact us</a>  -->
+            <button id ='login'>Login</button>
         </div>
     </nav>
   
@@ -248,7 +249,12 @@ span a{
         </div>
     </nav>
     
-
+    <script>
+        let loginButton = document.getElementById('login');
+        loginButton.addEventListener('click',function(){
+            alert('i am clicked');
+        });
+    </script>
 
     
 </body>
